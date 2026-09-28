@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Zivora | Books & Stationery</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #fbf7f2;
+      color: #3f3344;
+    }
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    nav {
+      height: 75px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 7%;
+      background: #fffaf5;
+      border-bottom: 1px solid #eee5df;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      color: #655477;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #3f3344;
+      font-size: 14px;
+    }
+
+    nav ul li a:hover {
+      color: #d99b8c;
+    }
+
+    .cart {
+      text-decoration: none;
+      color: #3f3344;
+      font-size: 14px;
+    }
+
+    .cart-count {
+      font-weight: bold;
+      margin-left: 4px;
+    }
+
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    .page-header {
+      text-align: center;
+      padding: 70px 20px 45px;
+    }
+
+    .small-title {
+      font-size: 12px;
+      letter-spacing: 3px;
+      color: #d99b8c;
+      margin-bottom: 15px;
+    }
+
+    .page-header h1 {
+      font-size: 48px;
+      margin-bottom: 15px;
+      color: #3f3344;
+    }
+
+    .page-header p {
+      color: #766c78;
+      max-width: 600px;
+      margin: auto;
+      line-height: 1.7;
+    }
+
+
+    /* =========================
+       PRODUCTS
+    ========================= */
+
+    .products {
+      width: 86%;
+      max-width: 1200px;
+      margin: auto;
+      padding-bottom: 80px;
+
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .product-card {
+      background: #fffaf5;
+      border: 1px solid #eee5df;
+      border-radius: 20px;
+      overflow: hidden;
+      transition: 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 15px 35px rgba(63, 51, 68, 0.10);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 330px;
+      overflow: hidden;
+      background: #eee7e1;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: 0.4s ease;
+    }
+
+    .product-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .product-info {
+      padding: 22px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      color: #d99b8c;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .product-info h3 {
+      font-size: 19px;
+      margin-bottom: 9px;
+      color: #3f3344;
+    }
+
+    .product-info p {
+      font-size: 13px;
+      color: #817781;
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+
+    .product-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .price {
+      font-size: 18px;
+      font-weight: bold;
+      color: #655477;
+    }
+
+    .add-btn {
+      border: none;
+      background: #655477;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 22px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: bold;
+      transition: 0.3s ease;
+    }
+
+    .add-btn:hover {
+      background: #4f4160;
+      transform: translateY(-2px);
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      background: #3f3344;
+      color: #fffaf5;
+      padding: 45px 7%;
+      text-align: center;
+    }
+
+    footer h2 {
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    footer p {
+      font-size: 13px;
+      color: #d8ced9;
+    }
+
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 900px) {
+
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+    }
+
+    @media (max-width: 600px) {
+
+      nav {
+        padding: 0 5%;
+      }
+
+      nav ul {
+        display: none;
+      }
+
+      .page-header {
+        padding: 50px 20px 35px;
+      }
+
+      .page-header h1 {
+        font-size: 36px;
+      }
+
+      .products {
+        width: 90%;
+        grid-template-columns: 1fr;
+      }
+
+      .product-image {
+        height: 360px;
+      }
+
+    }
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- =========================
+       NAVBAR
+  ========================= -->
+
+  <nav>
+
+    <div class="logo">
+      ZIVORA.
+    </div>
+
+    <ul>
+
+      <li>
+        <a href="index.html">
+          Home
+        </a>
+      </li>
+
+      <li>
+        <a href="index.html#categories">
+          Categories
+        </a>
+      </li>
+
+      <li>
+        <a href="index.html#featured">
+          Featured
+        </a>
+      </li>
+
+      <li>
+        <a href="index.html#about">
+          About
+        </a>
+      </li>
+
+    </ul>
+
+    <a href="cart.html" class="cart">
+      Cart 🛒
+      <span class="cart-count">0</span>
+    </a>
+
+  </nav>
+
+
+
+  <!-- =========================
+       HEADER
+  ========================= -->
+
+  <section class="page-header">
+
+    <div class="small-title">
+      ZIVORA / BOOKS
+    </div>
+
+    <h1>
+      Books & Stationery
+    </h1>
+
+    <p>
+      Thoughtfully selected books, journals and everyday stationery
+      for reading, planning and creating.
+    </p>
+
+  </section>
+
+
+
+  <!-- =========================
+       PRODUCTS
+  ========================= -->
+
+  <section class="products">
+
+
+    <!-- =========================
+         PRODUCT 1
+    ========================= -->
+
+    <div class="product-card">
+
+      <div class="product-image">
+
+        <img
+          src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=900&q=85"
+          alt="Stack of books"
+        >
+
+      </div>
+
+      <div class="product-info">
+
+        <span class="tag">
+          NEW
+        </span>
+
+        <h3>
+          Everyday Reading Edit
+        </h3>
+
+        <p>
+          A calm collection of books for your everyday reading time.
+        </p>
+
+        <div class="product-bottom">
+
+          <div class="price">
+            ₹699
+          </div>
+
+          <button
+            class="add-btn"
+            onclick="addToCart({
+              id: 25,
+              name: 'Everyday Reading Edit',
+              price: 699,
+              image: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=900&q=85'
+            })"
+          >
+            Add to Cart
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         PRODUCT 2
+    ========================= -->
+
+    <div class="product-card">
+
+      <div class="product-image">
+
+        <img
+          src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=900&q=85"
+          alt="Classic books"
+        >
+
+      </div>
+
+      <div class="product-info">
+
+        <span class="tag">
+          TRENDING
+        </span>
+
+        <h3>
+          Classic Book Collection
+        </h3>
+
+        <p>
+          A beautiful selection for quiet evenings and weekend reading.
+        </p>
+
+        <div class="product-bottom">
+
+          <div class="price">
+            ₹899
+          </div>
+
+          <button
+            class="add-btn"
+            onclick="addToCart({
+              id: 26,
+              name: 'Classic Book Collection',
+              price: 899,
+              image: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=900&q=85'
+            })"
+          >
+            Add to Cart
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         PRODUCT 3
+    ========================= -->
+
+    <div class="product-card">
+
+      <div class="product-image">
+
+        <img
+          src="https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=900&q=85"
+          alt="Minimal daily notebook"
+        >
+
+      </div>
+
+      <div class="product-info">
+
+        <span class="tag">
+          EVERYDAY
+        </span>
+
+        <h3>
+          Minimal Daily Notebook
+        </h3>
+
+        <p>
+          A simple notebook for notes, ideas, lists and daily thoughts.
+        </p>
+
+        <div class="product-bottom">
+
+          <div class="price">
+            ₹349
+          </div>
+
+          <button
+            class="add-btn"
+            onclick="addToCart({
+              id: 27,
+              name: 'Minimal Daily Notebook',
+              price: 349,
+              image: 'https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=900&q=85'
+            })"
+          >
+            Add to Cart
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         PRODUCT 4
+    ========================= -->
+
+    <div class="product-card">
+
+      <div class="product-image">
+
+        <img
+          src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=85"
+          alt="Creative journal"
+        >
+
+      </div>
+
+      <div class="product-info">
+
+        <span class="tag">
+          FAVOURITE
+        </span>
+
+        <h3>
+          Creative Journal
+        </h3>
+
+        <p>
+          A soft minimal journal made for thoughts, sketches and ideas.
+        </p>
+
+        <div class="product-bottom">
+
+          <div class="price">
+            ₹499
+          </div>
+
+          <button
+            class="add-btn"
+            onclick="addToCart({
+              id: 28,
+              name: 'Creative Journal',
+              price: 499,
+              image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=85'
+            })"
+          >
+            Add to Cart
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         PRODUCT 5
+    ========================= -->
+
+    <div class="product-card">
+
+      <div class="product-image">
+
+        <img
+          src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=900&q=85"
+          alt="Study stationery set"
+        >
+
+      </div>
+
+      <div class="product-info">
+
+        <span class="tag">
+          NEW
+        </span>
+
+        <h3>
+          Study Stationery Set
+        </h3>
+
+        <p>
+          Everyday stationery essentials for study and work.
+        </p>
+
+        <div class="product-bottom">
+
+          <div class="price">
+            ₹599
+          </div>
+
+          <button
+            class="add-btn"
+            onclick="addToCart({
+              id: 29,
+              name: 'Study Stationery Set',
+              price: 599,
+              image: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=900&q=85'
+            })"
+          >
+            Add to Cart
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         PRODUCT 6
+    ========================= -->
+
+    <div class="product-card">
+
+      <div class="product-image">
+
+        <img
+          src="https://images.unsplash.com/photo-1589998059171-988d887df646?auto=format&fit=crop&w=900&q=85"
+          alt="Books and stationery"
+        >
+
+      </div>
+
+      <div class="product-info">
+
+        <span class="tag">
+          POPULAR
+        </span>
+
+        <h3>
+          Study & Create Edit
+        </h3>
+
+        <p>
+          A curated mix of reading and stationery essentials.
+        </p>
+
+        <div class="product-bottom">
+
+          <div class="price">
+            ₹799
+          </div>
+
+          <button
+            class="add-btn"
+            onclick="addToCart({
+              id: 30,
+              name: 'Study & Create Edit',
+              price: 799,
+              image: 'https://images.unsplash.com/photo-1589998059171-988d887df646?auto=format&fit=crop&w=900&q=85'
+            })"
+          >
+            Add to Cart
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    <h2>
+      ZIVORA.
+    </h2>
+
+    <p>
+      Everyday things, thoughtfully curated.
+    </p>
+
+  </footer>
+
+
+
+  <!-- =========================
+       CART SCRIPT
+  ========================= -->
+
+  <script src="script.js"></script>
+
+</body>
+</html>

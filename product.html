@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Product Details | Zivora</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* =========================
+       PRODUCT PAGE
+    ========================= */
+
+    .product-page {
+      background: #fbf7f1;
+      min-height: 100vh;
+    }
+
+    .product-main {
+      padding: 75px 7% 90px;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    /* IMAGE */
+
+    .product-gallery {
+      position: relative;
+    }
+
+    .product-main-image {
+      height: 600px;
+      border-radius: 30px;
+      overflow: hidden;
+      background: #ead5cf;
+      position: relative;
+    }
+
+    .product-main-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .product-label {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: #fffaf5;
+      color: #5b405d;
+      padding: 9px 15px;
+      border-radius: 50px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    /* DETAILS */
+
+    .product-category {
+      color: #d9a58f;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+    }
+
+    .product-details h1 {
+      font-family: "Playfair Display", serif;
+      color: #352638;
+      font-size: clamp(42px, 5vw, 65px);
+      line-height: 1.05;
+      margin: 0 0 20px;
+    }
+
+    .product-rating {
+      color: #5b405d;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .product-price {
+      color: #5b405d;
+      font-size: 27px;
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+
+    .product-description {
+      color: #756d74;
+      line-height: 1.8;
+      font-size: 15px;
+      max-width: 540px;
+      margin-bottom: 28px;
+    }
+
+    .product-line {
+      height: 1px;
+      background: rgba(91, 64, 93, 0.12);
+      margin: 25px 0;
+    }
+
+    /* OPTIONS */
+
+    .product-option-title {
+      color: #352638;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .product-colors {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+
+    .color-option {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 3px solid #fffaf5;
+      box-shadow: 0 0 0 1px rgba(91, 64, 93, 0.25);
+      cursor: pointer;
+    }
+
+    .color-rose {
+      background: #c98989;
+    }
+
+    .color-ivory {
+      background: #eee2cc;
+    }
+
+    .color-plum {
+      background: #655477;
+    }
+
+    /* QUANTITY */
+
+    .quantity-row {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .quantity-box {
+      display: flex;
+      align-items: center;
+      border: 1px solid rgba(91, 64, 93, 0.2);
+      border-radius: 50px;
+      overflow: hidden;
+      background: #fffaf5;
+    }
+
+    .quantity-box button {
+      width: 40px;
+      height: 40px;
+      border: none;
+      background: transparent;
+      color: #5b405d;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .quantity-box span {
+      min-width: 30px;
+      text-align: center;
+      color: #352638;
+      font-weight: 600;
+    }
+
+    /* BUTTONS */
+
+    .product-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .add-cart {
+      border: 1px solid #5b405d;
+      background: transparent;
+      color: #5b405d;
+      padding: 15px 28px;
+      border-radius: 50px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .add-cart:hover {
+      background: #5b405d;
+      color: white;
+    }
+
+    .buy-now {
+      border: none;
+      background: #5b405d;
+      color: white;
+      padding: 15px 32px;
+      border-radius: 50px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .buy-now:hover {
+      background: #352638;
+      transform: translateY(-2px);
+    }
+
+    /* INFO CARDS */
+
+    .product-benefits {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      padding: 0 7% 80px;
+    }
+
+    .benefit-card {
+      background: #fffaf5;
+      border: 1px solid rgba(91, 64, 93, 0.08);
+      border-radius: 20px;
+      padding: 25px;
+      text-align: center;
+    }
+
+    .benefit-icon {
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+
+    .benefit-card h3 {
+      color: #352638;
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+
+    .benefit-card p {
+      color: #756d74;
+      font-size: 13px;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* BACK */
+
+    .product-back {
+      text-align: center;
+      padding: 0 7% 70px;
+    }
+
+    .product-back a {
+      color: #5b405d;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 900px) {
+
+      .product-main {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding-top: 50px;
+      }
+
+      .product-main-image {
+        height: 520px;
+      }
+
+    }
+
+    @media (max-width: 600px) {
+
+      .product-main {
+        padding: 40px 5% 60px;
+      }
+
+      .product-main-image {
+        height: 430px;
+        border-radius: 22px;
+      }
+
+      .product-details h1 {
+        font-size: 43px;
+      }
+
+      .product-benefits {
+        grid-template-columns: 1fr;
+        padding: 0 5% 60px;
+      }
+
+      .product-actions {
+        flex-direction: column;
+      }
+
+      .add-cart,
+      .buy-now {
+        width: 100%;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="product-page">
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <nav class="navbar">
+
+      <a href="index.html" class="logo">
+        ZIVORA
+      </a>
+
+      <div class="nav-links">
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="index.html#categories">
+          Categories
+        </a>
+
+        <a href="index.html#featured">
+          Featured
+        </a>
+
+        <a href="index.html#about">
+          About
+        </a>
+
+      </div>
+
+      <div class="nav-actions">
+
+        <button class="search-btn">
+          Search
+        </button>
+
+        <button class="cart-btn">
+          Cart <span>0</span>
+        </button>
+
+      </div>
+
+    </nav>
+
+
+    <!-- =========================
+         PRODUCT
+    ========================= -->
+
+    <main class="product-main">
+
+      <!-- IMAGE -->
+
+      <div class="product-gallery">
+
+        <div class="product-main-image">
+
+          <img
+            src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=1000&q=90"
+            alt="Soft Rose Midi Dress"
+          >
+
+          <span class="product-label">
+            NEW
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- DETAILS -->
+
+      <div class="product-details">
+
+        <div class="product-category">
+          ZIVORA / FASHION
+        </div>
+
+        <h1>
+          Soft Rose<br>
+          Midi Dress
+        </h1>
+
+        <div class="product-rating">
+          ★★★★★ &nbsp; 4.8 &nbsp; · &nbsp; 126 reviews
+        </div>
+
+        <div class="product-price">
+          ₹1,299
+        </div>
+
+        <p class="product-description">
+          A soft and elegant midi dress designed for everyday
+          comfort with a polished look. Perfect for casual
+          days, coffee dates and relaxed occasions.
+        </p>
+
+        <div class="product-line"></div>
+
+
+        <!-- COLOR -->
+
+        <div class="product-option-title">
+          Choose colour
+        </div>
+
+        <div class="product-colors">
+
+          <button
+            class="color-option color-rose"
+            aria-label="Rose"
+          ></button>
+
+          <button
+            class="color-option color-ivory"
+            aria-label="Ivory"
+          ></button>
+
+          <button
+            class="color-option color-plum"
+            aria-label="Plum"
+          ></button>
+
+        </div>
+
+
+        <!-- QUANTITY -->
+
+        <div class="product-option-title">
+          Quantity
+        </div>
+
+        <div class="quantity-row">
+
+          <div class="quantity-box">
+
+            <button type="button">
+              −
+            </button>
+
+            <span>
+              1
+            </span>
+
+            <button type="button">
+              +
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- ACTIONS -->
+
+        <div class="product-actions">
+
+          <button class="add-cart">
+            Add to Cart
+          </button>
+
+          <button class="buy-now">
+            Buy Now
+          </button>
+
+        </div>
+
+      </div>
+
+    </main>
+
+
+    <!-- =========================
+         BENEFITS
+    ========================= -->
+
+    <section class="product-benefits">
+
+      <div class="benefit-card">
+
+        <div class="benefit-icon">
+          ✦
+        </div>
+
+        <h3>
+          Curated Quality
+        </h3>
+
+        <p>
+          Thoughtfully selected products for everyday life.
+        </p>
+
+      </div>
+
+
+      <div class="benefit-card">
+
+        <div class="benefit-icon">
+          ♡
+        </div>
+
+        <h3>
+          Easy Shopping
+        </h3>
+
+        <p>
+          Simple browsing with a smooth shopping experience.
+        </p>
+
+      </div>
+
+
+      <div class="benefit-card">
+
+        <div class="benefit-icon">
+          ↗
+        </div>
+
+        <h3>
+          Everyday Style
+        </h3>
+
+        <p>
+          Pieces chosen to fit naturally into your lifestyle.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         BACK
+    ========================= -->
+
+    <div class="product-back">
+
+      <a href="fashion.html">
+        ← Back to Fashion
+      </a>
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer class="footer">
+
+      <div>
+
+        <h3>
+          ZIVORA
+        </h3>
+
+        <p>
+          Curated for your everyday.
+        </p>
+
+      </div>
+
+      <p>
+        © 2026 Zivora. All rights reserved.
+      </p>
+
+    </footer>
+
+  </div>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>

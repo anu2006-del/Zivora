@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Beauty | Zivora</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* =========================
+       BEAUTY PAGE
+    ========================= */
+
+    .beauty-page {
+      background: #fbf7f1;
+      min-height: 100vh;
+    }
+
+    .beauty-hero {
+      padding: 70px 7% 45px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .beauty-eyebrow {
+      color: #d9a58f;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+    }
+
+    .beauty-hero h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(48px, 6vw, 78px);
+      line-height: 1;
+      color: #352638;
+      margin-bottom: 22px;
+    }
+
+    .beauty-hero p {
+      max-width: 520px;
+      color: #756d74;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    .beauty-visual {
+      min-height: 360px;
+      border-radius: 30px;
+      background: linear-gradient(
+        135deg,
+        #ead5cf,
+        #f3eadf
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .beauty-visual::before {
+      content: "BEAUTY";
+      position: absolute;
+      font-family: "Playfair Display", serif;
+      font-size: 90px;
+      color: rgba(91, 64, 93, 0.08);
+      transform: rotate(-8deg);
+    }
+
+    .beauty-visual-card {
+      width: 210px;
+      height: 270px;
+      border-radius: 110px 110px 25px 25px;
+      background: #fffaf5;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 25px 60px rgba(53, 38, 56, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #5b405d;
+      font-family: "Playfair Display", serif;
+      font-size: 28px;
+    }
+
+    .beauty-section {
+      padding: 30px 7% 90px;
+    }
+
+    .beauty-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 30px;
+      gap: 20px;
+    }
+
+    .beauty-heading h2 {
+      font-family: "Playfair Display", serif;
+      color: #352638;
+      font-size: 38px;
+      margin: 0;
+    }
+
+    .beauty-heading p {
+      color: #756d74;
+      margin: 0;
+    }
+
+    .beauty-products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .beauty-card {
+      background: #fffaf5;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(91, 64, 93, 0.08);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .beauty-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 45px rgba(53, 38, 56, 0.12);
+    }
+
+    .beauty-image {
+      height: 330px;
+      position: relative;
+      overflow: hidden;
+      background: #ead5cf;
+    }
+
+    .beauty-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .beauty-card:hover .beauty-image img {
+      transform: scale(1.05);
+    }
+
+    .beauty-tag {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: #fffaf5;
+      color: #5b405d;
+      padding: 8px 13px;
+      border-radius: 50px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .beauty-info {
+      padding: 22px;
+    }
+
+    .beauty-info h3 {
+      color: #352638;
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .beauty-info p {
+      color: #756d74;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .beauty-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .beauty-price {
+      color: #5b405d;
+      font-weight: 700;
+      font-size: 17px;
+    }
+
+    .beauty-button {
+      border: none;
+      background: #5b405d;
+      color: white;
+      padding: 10px 17px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .beauty-button:hover {
+      background: #352638;
+      transform: translateY(-2px);
+    }
+
+    .beauty-back {
+      text-align: center;
+      padding: 0 7% 70px;
+    }
+
+    .beauty-back a {
+      color: #5b405d;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 900px) {
+
+      .beauty-hero {
+        grid-template-columns: 1fr;
+        padding-top: 50px;
+      }
+
+      .beauty-products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+    }
+
+    @media (max-width: 600px) {
+
+      .beauty-hero {
+        padding: 45px 5% 35px;
+      }
+
+      .beauty-hero h1 {
+        font-size: 50px;
+      }
+
+      .beauty-visual {
+        min-height: 300px;
+      }
+
+      .beauty-heading {
+        display: block;
+      }
+
+      .beauty-heading h2 {
+        font-size: 32px;
+        margin-bottom: 8px;
+      }
+
+      .beauty-products {
+        grid-template-columns: 1fr;
+      }
+
+      .beauty-image {
+        height: 360px;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="beauty-page">
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <nav class="navbar">
+
+      <a href="index.html" class="logo">
+        ZIVORA
+      </a>
+
+      <div class="nav-links">
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="index.html#categories">
+          Categories
+        </a>
+
+        <a href="index.html#featured">
+          Featured
+        </a>
+
+        <a href="index.html#about">
+          About
+        </a>
+
+      </div>
+
+      <div class="nav-actions">
+
+        <button class="search-btn">
+          Search
+        </button>
+
+        <!-- CART -->
+
+        <a href="cart.html" class="cart-btn">
+          Cart
+          <span class="cart-count">0</span>
+        </a>
+
+      </div>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="beauty-hero">
+
+      <div>
+
+        <div class="beauty-eyebrow">
+          BEAUTY EDIT
+        </div>
+
+        <h1>
+          Beauty,<br>
+          beautifully chosen.
+        </h1>
+
+        <p>
+          Discover skincare, makeup and everyday beauty
+          essentials curated to make your routine feel a
+          little more special.
+        </p>
+
+      </div>
+
+
+      <div class="beauty-visual">
+
+        <div class="beauty-visual-card">
+          Zivora<br>
+          Beauty
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         PRODUCTS
+    ========================= -->
+
+    <section class="beauty-section">
+
+      <div class="beauty-heading">
+
+        <div>
+
+          <h2>
+            Beauty Picks
+          </h2>
+
+        </div>
+
+        <p>
+          Everyday essentials, thoughtfully selected.
+        </p>
+
+      </div>
+
+
+      <div class="beauty-products">
+
+
+        <!-- =========================
+             PRODUCT 1
+        ========================= -->
+
+        <article class="beauty-card">
+
+          <div class="beauty-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=900&q=85"
+              alt="Beauty makeup products"
+            >
+
+            <span class="beauty-tag">
+              NEW
+            </span>
+
+          </div>
+
+          <div class="beauty-info">
+
+            <h3>
+              Everyday Makeup Edit
+            </h3>
+
+            <p>
+              Simple beauty essentials for an effortless everyday look.
+            </p>
+
+            <div class="beauty-bottom">
+
+              <span class="beauty-price">
+                ₹899
+              </span>
+
+              <button
+                class="beauty-button"
+                onclick="addToCart({
+                  id: 31,
+                  name: 'Everyday Makeup Edit',
+                  price: 899,
+                  image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=900&q=85'
+                })"
+              >
+                Add to cart
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- =========================
+             PRODUCT 2
+        ========================= -->
+
+        <article class="beauty-card">
+
+          <div class="beauty-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=900&q=85"
+              alt="Skincare products"
+            >
+
+            <span class="beauty-tag">
+              TRENDING
+            </span>
+
+          </div>
+
+          <div class="beauty-info">
+
+            <h3>
+              Soft Glow Skincare
+            </h3>
+
+            <p>
+              A clean-looking skincare collection for your daily routine.
+            </p>
+
+            <div class="beauty-bottom">
+
+              <span class="beauty-price">
+                ₹1,199
+              </span>
+
+              <button
+                class="beauty-button"
+                onclick="addToCart({
+                  id: 32,
+                  name: 'Soft Glow Skincare',
+                  price: 1199,
+                  image: 'https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=900&q=85'
+                })"
+              >
+                Add to cart
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- =========================
+             PRODUCT 3
+        ========================= -->
+
+        <article class="beauty-card">
+
+          <div class="beauty-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=900&q=85"
+              alt="Serum skincare product"
+            >
+
+          </div>
+
+          <div class="beauty-info">
+
+            <h3>
+              Daily Glow Serum
+            </h3>
+
+            <p>
+              Lightweight skincare essential for a fresh everyday glow.
+            </p>
+
+            <div class="beauty-bottom">
+
+              <span class="beauty-price">
+                ₹749
+              </span>
+
+              <button
+                class="beauty-button"
+                onclick="addToCart({
+                  id: 33,
+                  name: 'Daily Glow Serum',
+                  price: 749,
+                  image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=900&q=85'
+                })"
+              >
+                Add to cart
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- =========================
+             PRODUCT 4
+        ========================= -->
+
+        <article class="beauty-card">
+
+          <div class="beauty-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=900&q=85"
+              alt="Perfume bottle"
+            >
+
+            <span class="beauty-tag">
+              FAVOURITE
+            </span>
+
+          </div>
+
+          <div class="beauty-info">
+
+            <h3>
+              Signature Perfume
+            </h3>
+
+            <p>
+              A soft everyday fragrance designed for a subtle finish.
+            </p>
+
+            <div class="beauty-bottom">
+
+              <span class="beauty-price">
+                ₹1,499
+              </span>
+
+              <button
+                class="beauty-button"
+                onclick="addToCart({
+                  id: 34,
+                  name: 'Signature Perfume',
+                  price: 1499,
+                  image: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=900&q=85'
+                })"
+              >
+                Add to cart
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- =========================
+             PRODUCT 5
+        ========================= -->
+
+        <article class="beauty-card">
+
+          <div class="beauty-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=900&q=85"
+              alt="Lipstick beauty product"
+            >
+
+          </div>
+
+          <div class="beauty-info">
+
+            <h3>
+              Nude Lip Collection
+            </h3>
+
+            <p>
+              Easy-to-wear shades for everyday outfits and occasions.
+            </p>
+
+            <div class="beauty-bottom">
+
+              <span class="beauty-price">
+                ₹599
+              </span>
+
+              <button
+                class="beauty-button"
+                onclick="addToCart({
+                  id: 35,
+                  name: 'Nude Lip Collection',
+                  price: 599,
+                  image: 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=900&q=85'
+                })"
+              >
+                Add to cart
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- =========================
+             PRODUCT 6
+        ========================= -->
+
+        <article class="beauty-card">
+
+          <div class="beauty-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?auto=format&fit=crop&w=900&q=85"
+              alt="Body care products"
+            >
+
+          </div>
+
+          <div class="beauty-info">
+
+            <h3>
+              Body Care Essentials
+            </h3>
+
+            <p>
+              Everyday body-care favourites for a fresh self-care routine.
+            </p>
+
+            <div class="beauty-bottom">
+
+              <span class="beauty-price">
+                ₹999
+              </span>
+
+              <button
+                class="beauty-button"
+                onclick="addToCart({
+                  id: 36,
+                  name: 'Body Care Essentials',
+                  price: 999,
+                  image: 'https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?auto=format&fit=crop&w=900&q=85'
+                })"
+              >
+                Add to cart
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         BACK
+    ========================= -->
+
+    <div class="beauty-back">
+
+      <a href="index.html">
+        ← Back to Zivora
+      </a>
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer class="footer">
+
+      <div>
+
+        <h3>
+          ZIVORA
+        </h3>
+
+        <p>
+          Curated for your everyday.
+        </p>
+
+      </div>
+
+      <p>
+        © 2026 Zivora. All rights reserved.
+      </p>
+
+    </footer>
+
+  </div>
+
+
+  <!-- =========================
+       CART SCRIPT
+  ========================= -->
+
+  <script src="script.js"></script>
+
+</body>
+</html>

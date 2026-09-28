@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Zivora | Fashion</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* =========================
+           FASHION PAGE
+        ========================= */
+
+        .fashion-page {
+            background: var(--ivory);
+            min-height: 100vh;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .category-hero {
+            padding: 90px 7% 70px;
+            background: var(--ivory);
+            border-top: 1px solid rgba(53, 38, 56, 0.08);
+        }
+
+        .category-hero-content {
+            max-width: 850px;
+        }
+
+        .category-hero h1 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(3.5rem, 7vw, 6.5rem);
+            line-height: 0.95;
+            color: var(--plum-dark);
+            margin: 18px 0 25px;
+        }
+
+        .category-hero h1 span {
+            color: var(--peach);
+        }
+
+        .category-description {
+            max-width: 620px;
+            color: var(--muted);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+
+        /* =========================
+           PRODUCTS
+        ========================= */
+
+        .products-section {
+            padding: 80px 7%;
+            background: var(--ivory);
+        }
+
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            margin-bottom: 45px;
+        }
+
+        .section-heading h2 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(2.8rem, 5vw, 4.5rem);
+            color: var(--plum-dark);
+            margin-top: 8px;
+        }
+
+        .product-count {
+            color: var(--muted);
+        }
+
+
+        /* =========================
+           PRODUCT GRID
+        ========================= */
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+
+        /* =========================
+           PRODUCT CARD
+        ========================= */
+
+        .product-card {
+            background: #ffffff;
+            border-radius: 24px;
+            overflow: hidden;
+
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px rgba(53, 38, 56, 0.12);
+        }
+
+
+        /* =========================
+           PRODUCT IMAGE
+        ========================= */
+
+        .product-image {
+            height: 430px;
+            position: relative;
+            overflow: hidden;
+            background: #eee;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            display: block;
+
+            object-fit: cover;
+            object-position: center;
+
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+
+        /* =========================
+           BADGE
+        ========================= */
+
+        .product-badge {
+            position: absolute;
+            top: 18px;
+            left: 18px;
+
+            background: var(--plum-dark);
+            color: white;
+
+            padding: 8px 13px;
+            border-radius: 50px;
+
+            font-size: 0.7rem;
+            letter-spacing: 1.5px;
+
+            z-index: 2;
+        }
+
+
+        /* =========================
+           PRODUCT INFO
+        ========================= */
+
+        .product-info {
+            padding: 22px;
+        }
+
+        .product-category {
+            color: var(--muted);
+
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+
+            margin-bottom: 8px;
+        }
+
+        .product-info h3 {
+            color: var(--charcoal);
+
+            font-size: 1.15rem;
+
+            margin-bottom: 20px;
+        }
+
+        .product-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 12px;
+        }
+
+        .price {
+            color: var(--plum);
+
+            font-weight: 700;
+            font-size: 1.05rem;
+
+            white-space: nowrap;
+        }
+
+
+        /* =========================
+           ADD TO CART BUTTON
+        ========================= */
+
+        .add-btn {
+            width: auto;
+            height: auto;
+
+            min-width: 105px;
+
+            padding: 11px 18px;
+
+            border: none;
+            border-radius: 30px;
+
+            background: var(--plum);
+            color: white;
+
+            font-size: 0.82rem;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            white-space: nowrap;
+
+            transition: 0.3s ease;
+        }
+
+        .add-btn:hover {
+            background: var(--plum-dark);
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           BACK BUTTON
+        ========================= */
+
+        .back-section {
+            padding: 20px 7% 70px;
+            background: var(--ivory);
+        }
+
+        .back-link {
+            color: var(--plum);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            color: var(--peach);
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            padding: 45px 7%;
+
+            background: var(--plum-dark);
+            color: white;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+
+            font-weight: 700;
+
+            letter-spacing: 4px;
+        }
+
+        .footer-logo span {
+            color: var(--peach);
+        }
+
+        .footer p {
+            margin: 12px 0;
+
+            color: #d8ced9;
+        }
+
+        .footer small {
+            color: #aaa0aa;
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .product-image {
+                height: 360px;
+            }
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .category-hero {
+                padding: 65px 6% 50px;
+            }
+
+            .products-section {
+                padding: 60px 6%;
+            }
+
+            .section-heading {
+                align-items: flex-start;
+
+                flex-direction: column;
+
+                gap: 10px;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-image {
+                height: 420px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<div class="fashion-page">
+
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            ZIVORA<span>.</span>
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="index.html#categories">
+                Categories
+            </a>
+
+            <a href="index.html#featured">
+                Featured
+            </a>
+
+            <a href="index.html#about">
+                About
+            </a>
+
+        </div>
+
+
+        <div class="nav-actions">
+
+            <button class="search-btn">
+                ⌕
+            </button>
+
+
+            <button
+                class="cart-btn"
+                onclick="window.location.href='cart.html'"
+            >
+
+                🛒
+
+                <span class="cart-count">
+                    0
+                </span>
+
+            </button>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="category-hero">
+
+        <div class="category-hero-content">
+
+            <p class="eyebrow">
+                ZIVORA / FASHION
+            </p>
+
+
+            <h1>
+                Style that feels
+                <span>like you.</span>
+            </h1>
+
+
+            <p class="category-description">
+                Discover dresses, everyday looks and timeless
+                pieces curated for your personal style.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PRODUCTS
+    ========================= -->
+
+    <section class="products-section">
+
+
+        <div class="section-heading">
+
+            <div>
+
+                <p class="eyebrow">
+                    CURATED COLLECTION
+                </p>
+
+                <h2>
+                    Fashion picks
+                </h2>
+
+            </div>
+
+
+            <p class="product-count">
+                6 products
+            </p>
+
+        </div>
+
+
+        <div class="product-grid">
+
+
+            <!-- =========================
+                 PRODUCT 1
+            ========================= -->
+
+            <article class="product-card">
+
+                <div class="product-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=900&q=85"
+                        alt="Soft Rose Midi Dress"
+                    >
+
+                    <span class="product-badge">
+                        NEW
+                    </span>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <p class="product-category">
+                        Dresses
+                    </p>
+
+
+                    <h3>
+                        Soft Rose Midi Dress
+                    </h3>
+
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            ₹1,299
+                        </span>
+
+
+                        <button
+                            class="add-btn"
+                            onclick="addToCart({
+                                id: 1,
+                                name: 'Soft Rose Midi Dress',
+                                price: 1299,
+                                image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=900&q=85'
+                            })"
+                        >
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- =========================
+                 PRODUCT 2
+            ========================= -->
+
+            <article class="product-card">
+
+                <div class="product-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1612722432474-b971cdcea546?auto=format&fit=crop&w=900&q=85"
+                        alt="Ivory Floral Dress"
+                    >
+
+                    <span class="product-badge">
+                        TRENDING
+                    </span>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <p class="product-category">
+                        Dresses
+                    </p>
+
+
+                    <h3>
+                        Ivory Floral Dress
+                    </h3>
+
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            ₹1,499
+                        </span>
+
+
+                        <button
+                            class="add-btn"
+                            onclick="addToCart({
+                                id: 2,
+                                name: 'Ivory Floral Dress',
+                                price: 1499,
+                                image: 'https://images.unsplash.com/photo-1612722432474-b971cdcea546?auto=format&fit=crop&w=900&q=85'
+                            })"
+                        >
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- =========================
+                 PRODUCT 3
+            ========================= -->
+
+            <article class="product-card">
+
+                <div class="product-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1591369822096-ffd140ec948f?auto=format&fit=crop&w=900&q=85"
+                        alt="Minimal Linen Top"
+                    >
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <p class="product-category">
+                        Tops
+                    </p>
+
+
+                    <h3>
+                        Minimal Linen Top
+                    </h3>
+
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            ₹899
+                        </span>
+
+
+                        <button
+                            class="add-btn"
+                            onclick="addToCart({
+                                id: 3,
+                                name: 'Minimal Linen Top',
+                                price: 899,
+                                image: 'https://images.unsplash.com/photo-1591369822096-ffd140ec948f?auto=format&fit=crop&w=900&q=85'
+                            })"
+                        >
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- =========================
+                 PRODUCT 4
+            ========================= -->
+
+            <article class="product-card">
+
+                <div class="product-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1596783074918-c84cb06531ca?auto=format&fit=crop&w=900&q=85"
+                        alt="Sage Green Maxi Dress"
+                    >
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <p class="product-category">
+                        Dresses
+                    </p>
+
+
+                    <h3>
+                        Sage Green Maxi
+                    </h3>
+
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            ₹1,699
+                        </span>
+
+
+                        <button
+                            class="add-btn"
+                            onclick="addToCart({
+                                id: 4,
+                                name: 'Sage Green Maxi',
+                                price: 1699,
+                                image: 'https://images.unsplash.com/photo-1596783074918-c84cb06531ca?auto=format&fit=crop&w=900&q=85'
+                            })"
+                        >
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- =========================
+                 PRODUCT 5
+            ========================= -->
+
+            <article class="product-card">
+
+                <div class="product-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=85"
+                        alt="Everyday Co-ord Set"
+                    >
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <p class="product-category">
+                        Co-ords
+                    </p>
+
+
+                    <h3>
+                        Everyday Co-ord Set
+                    </h3>
+
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            ₹1,399
+                        </span>
+
+
+                        <button
+                            class="add-btn"
+                            onclick="addToCart({
+                                id: 5,
+                                name: 'Everyday Co-ord Set',
+                                price: 1399,
+                                image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=85'
+                            })"
+                        >
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- =========================
+                 PRODUCT 6
+            ========================= -->
+
+            <article class="product-card">
+
+                <div class="product-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?auto=format&fit=crop&w=900&q=85"
+                        alt="Rose Cotton Kurta"
+                    >
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <p class="product-category">
+                        Ethnic Wear
+                    </p>
+
+
+                    <h3>
+                        Rose Cotton Kurta
+                    </h3>
+
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            ₹999
+                        </span>
+
+
+                        <button
+                            class="add-btn"
+                            onclick="addToCart({
+                                id: 6,
+                                name: 'Rose Cotton Kurta',
+                                price: 999,
+                                image: 'https://images.unsplash.com/photo-1581044777550-4cfa60707c03?auto=format&fit=crop&w=900&q=85'
+                            })"
+                        >
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         BACK
+    ========================= -->
+
+    <section class="back-section">
+
+        <a
+            href="index.html"
+            class="back-link"
+        >
+            ← Back to Zivora
+        </a>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer class="footer">
+
+        <div class="footer-logo">
+            ZIVORA<span>.</span>
+        </div>
+
+
+        <p>
+            Curated for your everyday.
+        </p>
+
+
+        <small>
+            © 2026 Zivora. All rights reserved.
+        </small>
+
+    </footer>
+
+
+</div>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

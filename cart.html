@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Zivora | Your Cart</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* =========================
+           CART PAGE
+        ========================= */
+
+        .cart-page {
+            min-height: 75vh;
+            padding: 80px 7%;
+            background: #fbf7f1;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .cart-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .cart-header span {
+            color: #a47b91;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .cart-header h1 {
+            font-family: "Playfair Display", serif;
+            color: #352638;
+            font-size: 48px;
+            margin: 10px 0;
+        }
+
+        .cart-header p {
+            color: #756d74;
+        }
+
+
+        /* =========================
+           CART CONTAINER
+        ========================= */
+
+        .cart-container {
+            max-width: 1000px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1fr 320px;
+
+            gap: 30px;
+        }
+
+
+        /* =========================
+           CART ITEMS
+        ========================= */
+
+        .cart-items {
+            background: white;
+            border-radius: 24px;
+            padding: 25px;
+
+            box-shadow:
+                0 10px 30px rgba(53, 38, 56, 0.07);
+        }
+
+
+        /* =========================
+           CART ITEM
+        ========================= */
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+
+            gap: 20px;
+
+            padding: 20px 0;
+
+            border-bottom: 1px solid #eee5df;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+
+        .cart-item img {
+            width: 100px;
+            height: 120px;
+
+            object-fit: cover;
+
+            border-radius: 16px;
+        }
+
+
+        /* =========================
+           CART DETAILS
+        ========================= */
+
+        .cart-details {
+            flex: 1;
+        }
+
+        .cart-details h3 {
+            color: #352638;
+
+            margin: 7px 0;
+
+            font-size: 18px;
+        }
+
+        .cart-details p {
+            color: #756d74;
+
+            margin: 0;
+        }
+
+
+        /* =========================
+           QUANTITY
+        ========================= */
+
+        .quantity {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            margin-top: 12px;
+        }
+
+        .quantity button {
+            width: 30px;
+            height: 30px;
+
+            border: 1px solid #ddd2cb;
+
+            background: #fbf7f1;
+
+            border-radius: 50%;
+
+            cursor: pointer;
+
+            font-size: 16px;
+
+            color: #352638;
+
+            transition: 0.2s;
+        }
+
+        .quantity button:hover {
+            background: #5b405d;
+            color: white;
+        }
+
+        .quantity span {
+            font-weight: 600;
+            color: #352638;
+            min-width: 18px;
+            text-align: center;
+        }
+
+
+        /* =========================
+           REMOVE
+        ========================= */
+
+        .remove-btn {
+            border: none;
+
+            background: none;
+
+            color: #a47b91;
+
+            cursor: pointer;
+
+            font-size: 13px;
+
+            margin-top: 8px;
+
+            padding: 0;
+        }
+
+        .remove-btn:hover {
+            color: #352638;
+        }
+
+
+        /* =========================
+           ITEM PRICE
+        ========================= */
+
+        .item-price {
+            color: #352638;
+
+            font-weight: 700;
+
+            white-space: nowrap;
+        }
+
+
+        /* =========================
+           EMPTY CART
+        ========================= */
+
+        .empty-cart {
+            text-align: center;
+
+            padding: 60px 20px;
+
+            color: #756d74;
+        }
+
+        .empty-cart h2 {
+            font-family: "Playfair Display", serif;
+
+            color: #352638;
+
+            font-size: 30px;
+
+            margin-bottom: 10px;
+        }
+
+        .empty-cart p {
+            margin-bottom: 25px;
+        }
+
+        .empty-cart a {
+            display: inline-block;
+
+            padding: 12px 22px;
+
+            background: #5b405d;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 30px;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           SUMMARY
+        ========================= */
+
+        .summary {
+            background: #5b405d;
+
+            color: white;
+
+            border-radius: 24px;
+
+            padding: 30px;
+
+            height: fit-content;
+
+            position: sticky;
+
+            top: 100px;
+        }
+
+        .summary h2 {
+            font-family: "Playfair Display", serif;
+
+            font-size: 28px;
+
+            margin-top: 0;
+        }
+
+
+        .summary-row {
+            display: flex;
+
+            justify-content: space-between;
+
+            margin: 18px 0;
+
+            color: #eee5df;
+        }
+
+
+        .summary-total {
+            border-top: 1px solid rgba(255,255,255,0.25);
+
+            padding-top: 20px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            font-size: 20px;
+
+            font-weight: 700;
+        }
+
+
+        /* =========================
+           CHECKOUT
+        ========================= */
+
+        .checkout-btn {
+            width: 100%;
+
+            margin-top: 25px;
+
+            padding: 15px;
+
+            border: none;
+
+            border-radius: 50px;
+
+            background: #f0c7b5;
+
+            color: #352638;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-3px);
+
+            background: white;
+        }
+
+
+        /* =========================
+           CONTINUE SHOPPING
+        ========================= */
+
+        .continue-shopping {
+            display: block;
+
+            text-align: center;
+
+            margin-top: 18px;
+
+            color: #eee5df;
+
+            text-decoration: none;
+
+            font-size: 14px;
+        }
+
+        .continue-shopping:hover {
+            color: white;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            .cart-container {
+                grid-template-columns: 1fr;
+            }
+
+            .summary {
+                position: static;
+            }
+
+            .cart-header h1 {
+                font-size: 38px;
+            }
+
+        }
+
+
+        @media (max-width: 550px) {
+
+            .cart-page {
+                padding: 60px 5%;
+            }
+
+            .cart-item {
+                align-items: flex-start;
+            }
+
+            .cart-item img {
+                width: 85px;
+                height: 105px;
+            }
+
+            .item-price {
+                font-size: 14px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            ZIVORA<span>.</span>
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="index.html#categories">
+                Categories
+            </a>
+
+            <a href="index.html#featured">
+                Featured
+            </a>
+
+            <a href="index.html#about">
+                About
+            </a>
+
+        </div>
+
+
+        <div class="nav-actions">
+
+            <button class="search-btn">
+                ⌕
+            </button>
+
+
+            <a href="cart.html" class="cart-btn">
+
+                🛒
+
+                <span class="cart-count">
+                    0
+                </span>
+
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =========================
+         CART
+    ========================= -->
+
+    <main class="cart-page">
+
+
+        <!-- HEADER -->
+
+        <div class="cart-header">
+
+            <span>
+                YOUR ZIVORA BAG
+            </span>
+
+            <h1>
+                Your Cart
+            </h1>
+
+            <p>
+                Everything you love, in one place.
+            </p>
+
+        </div>
+
+
+
+        <div class="cart-container">
+
+
+            <!-- =========================
+                 CART ITEMS
+            ========================= -->
+
+            <div
+                class="cart-items"
+                id="cart-items"
+            >
+
+                <!--
+                    JavaScript will automatically
+                    add cart products here.
+                -->
+
+            </div>
+
+
+
+            <!-- =========================
+                 SUMMARY
+            ========================= -->
+
+            <aside class="summary">
+
+                <h2>
+                    Order Summary
+                </h2>
+
+
+                <div class="summary-row">
+
+                    <span>
+                        Subtotal
+                    </span>
+
+                    <span id="cart-subtotal">
+                        ₹0
+                    </span>
+
+                </div>
+
+
+                <div class="summary-row">
+
+                    <span>
+                        Delivery
+                    </span>
+
+                    <span>
+                        FREE
+                    </span>
+
+                </div>
+
+
+                <div class="summary-total">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <span id="cart-total">
+                        ₹0
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="checkout-btn"
+                    onclick="window.location.href='checkout.html'"
+                >
+                    Proceed to Checkout
+                </button>
+
+
+                <a
+                    href="fashion.html"
+                    class="continue-shopping"
+                >
+                    ← Continue Shopping
+                </a>
+
+            </aside>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer class="footer">
+
+        <div class="footer-logo">
+            ZIVORA<span>.</span>
+        </div>
+
+        <p>
+            Curated for your everyday.
+        </p>
+
+        <div class="footer-bottom">
+            © 2026 Zivora. All rights reserved.
+        </div>
+
+    </footer>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>

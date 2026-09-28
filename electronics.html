@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Electronics | Zivora</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* =========================
+       ELECTRONICS PAGE
+    ========================= */
+
+    .electronics-page {
+      background: #fbf7f1;
+      min-height: 100vh;
+    }
+
+    .electronics-hero {
+      padding: 70px 7% 45px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .electronics-eyebrow {
+      color: #d9a58f;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+    }
+
+    .electronics-hero h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(48px, 6vw, 78px);
+      line-height: 1;
+      color: #352638;
+      margin-bottom: 22px;
+    }
+
+    .electronics-hero p {
+      max-width: 520px;
+      color: #756d74;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    /* HERO VISUAL */
+
+    .electronics-visual {
+      min-height: 360px;
+      border-radius: 30px;
+      background: linear-gradient(
+        135deg,
+        #d9d4dc,
+        #eee9e2
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .electronics-visual::before {
+      content: "TECH";
+      position: absolute;
+      font-family: "Playfair Display", serif;
+      font-size: 100px;
+      color: rgba(53, 38, 56, 0.07);
+      transform: rotate(-8deg);
+    }
+
+    .tech-orbit {
+      width: 235px;
+      height: 235px;
+      border-radius: 50%;
+      border: 1px solid rgba(91, 64, 93, 0.18);
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .tech-device {
+      width: 115px;
+      height: 170px;
+      border-radius: 20px;
+      background: #29252a;
+      border: 6px solid #5b405d;
+      box-shadow: 0 25px 50px rgba(41, 37, 42, 0.25);
+      position: relative;
+    }
+
+    .tech-device::before {
+      content: "";
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      border: 3px solid #d9a58f;
+      position: absolute;
+      top: 28px;
+      left: 24px;
+    }
+
+    .tech-device::after {
+      content: "";
+      width: 42px;
+      height: 4px;
+      border-radius: 10px;
+      background: #d9a58f;
+      position: absolute;
+      bottom: 15px;
+      left: 31px;
+    }
+
+    /* PRODUCTS */
+
+    .electronics-section {
+      padding: 30px 7% 90px;
+    }
+
+    .electronics-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 30px;
+      gap: 20px;
+    }
+
+    .electronics-heading h2 {
+      font-family: "Playfair Display", serif;
+      color: #352638;
+      font-size: 38px;
+      margin: 0;
+    }
+
+    .electronics-heading p {
+      color: #756d74;
+      margin: 0;
+    }
+
+    .electronics-products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .electronics-card {
+      background: #fffaf5;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(91, 64, 93, 0.08);
+      transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+    }
+
+    .electronics-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 45px rgba(53, 38, 56, 0.12);
+    }
+
+    .electronics-image {
+      height: 330px;
+      position: relative;
+      overflow: hidden;
+      background: #eee9e2;
+    }
+
+    .electronics-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .electronics-card:hover .electronics-image img {
+      transform: scale(1.05);
+    }
+
+    .electronics-tag {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: #fffaf5;
+      color: #5b405d;
+      padding: 8px 13px;
+      border-radius: 50px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .electronics-info {
+      padding: 22px;
+    }
+
+    .electronics-info h3 {
+      color: #352638;
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .electronics-info p {
+      color: #756d74;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .electronics-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .electronics-price {
+      color: #5b405d;
+      font-weight: 700;
+      font-size: 17px;
+    }
+
+    .electronics-button {
+      border: none;
+      background: #5b405d;
+      color: white;
+      padding: 10px 17px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .electronics-button:hover {
+      background: #352638;
+      transform: translateY(-2px);
+    }
+
+    /* BACK */
+
+    .electronics-back {
+      text-align: center;
+      padding: 0 7% 70px;
+    }
+
+    .electronics-back a {
+      color: #5b405d;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 900px) {
+
+      .electronics-hero {
+        grid-template-columns: 1fr;
+        padding-top: 50px;
+      }
+
+      .electronics-products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+    }
+
+    @media (max-width: 600px) {
+
+      .electronics-hero {
+        padding: 45px 5% 35px;
+      }
+
+      .electronics-hero h1 {
+        font-size: 50px;
+      }
+
+      .electronics-visual {
+        min-height: 300px;
+      }
+
+      .electronics-heading {
+        display: block;
+      }
+
+      .electronics-heading h2 {
+        font-size: 32px;
+        margin-bottom: 8px;
+      }
+
+      .electronics-products {
+        grid-template-columns: 1fr;
+      }
+
+      .electronics-image {
+        height: 360px;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="electronics-page">
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <nav class="navbar">
+
+      <a href="index.html" class="logo">
+        ZIVORA
+      </a>
+
+      <div class="nav-links">
+
+        <a href="index.html">Home</a>
+
+        <a href="index.html#categories">
+          Categories
+        </a>
+
+        <a href="index.html#featured">
+          Featured
+        </a>
+
+        <a href="index.html#about">
+          About
+        </a>
+
+      </div>
+
+      <div class="nav-actions">
+
+        <button class="search-btn">
+          Search
+        </button>
+
+        <a href="cart.html" class="cart-btn">
+          Cart <span class="cart-count">0</span>
+        </a>
+
+      </div>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="electronics-hero">
+
+      <div>
+
+        <div class="electronics-eyebrow">
+          TECH EDIT
+        </div>
+
+        <h1>
+          Smart things,<br>
+          simply chosen.
+        </h1>
+
+        <p>
+          Discover everyday technology and useful gadgets
+          designed to make work, entertainment and life
+          a little easier.
+        </p>
+
+      </div>
+
+
+      <div class="electronics-visual">
+
+        <div class="tech-orbit">
+
+          <div class="tech-device"></div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         PRODUCTS
+    ========================= -->
+
+    <section class="electronics-section">
+
+      <div class="electronics-heading">
+
+        <div>
+
+          <h2>
+            Tech Picks
+          </h2>
+
+        </div>
+
+        <p>
+          Useful gadgets for your everyday world.
+        </p>
+
+      </div>
+
+
+      <div class="electronics-products">
+
+
+        <!-- PRODUCT 1 -->
+
+        <article class="electronics-card">
+
+          <div class="electronics-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=900&q=85"
+              alt="Wireless headphones"
+            >
+
+            <span class="electronics-tag">
+              NEW
+            </span>
+
+          </div>
+
+          <div class="electronics-info">
+
+            <h3>
+              Wireless Headphones
+            </h3>
+
+            <p>
+              Comfortable wireless headphones for music,
+              calls and everyday use.
+            </p>
+
+            <div class="electronics-bottom">
+
+              <span class="electronics-price">
+                ₹2,499
+              </span>
+
+              <button
+                class="electronics-button"
+                onclick="addToCart({
+                  id: 7,
+                  name: 'Wireless Headphones',
+                  price: 2499,
+                  image: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=900&q=85'
+                })"
+              >
+                Add to cart
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 2 -->
+
+        <article class="electronics-card">
+
+          <div class="electronics-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=85"
+              alt="Smart watch"
+            >
+
+            <span class="electronics-tag">
+              TRENDING
+            </span>
+
+          </div>
+
+          <div class="electronics-info">
+
+            <h3>
+              Everyday Smart Watch
+            </h3>
+
+            <p>
+              A modern smartwatch for notifications,
+              activity and daily routines.
+            </p>
+
+            <div class="electronics-bottom">
+
+              <span class="electronics-price">
+                ₹3,299
+              </span>
+
+              <button
+                class="electronics-button"
+                onclick="addToCart({
+                  id: 8,
+                  name: 'Everyday Smart Watch',
+                  price: 3299,
+                  image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=85'
+                })"
+              >
+                Add to cart
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 3 -->
+
+        <article class="electronics-card">
+
+          <div class="electronics-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=900&q=85"
+              alt="Wireless earbuds"
+            >
+
+            <span class="electronics-tag">
+              POPULAR
+            </span>
+
+          </div>
+
+          <div class="electronics-info">
+
+            <h3>
+              Mini Wireless Buds
+            </h3>
+
+            <p>
+              Compact wireless earbuds designed for music
+              and calls on the go.
+            </p>
+
+            <div class="electronics-bottom">
+
+              <span class="electronics-price">
+                ₹1,799
+              </span>
+
+              <button
+                class="electronics-button"
+                onclick="addToCart({
+                  id: 9,
+                  name: 'Mini Wireless Buds',
+                  price: 1799,
+                  image: 'https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=900&q=85'
+                })"
+              >
+                Add to cart
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 4 -->
+
+        <article class="electronics-card">
+
+          <div class="electronics-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=900&q=85"
+              alt="Laptop workspace"
+            >
+
+            <span class="electronics-tag">
+              WORKSPACE
+            </span>
+
+          </div>
+
+          <div class="electronics-info">
+
+            <h3>
+              Modern Laptop Setup
+            </h3>
+
+            <p>
+              A clean and practical laptop setup for work,
+              study and creativity.
+            </p>
+
+            <div class="electronics-bottom">
+
+              <span class="electronics-price">
+                ₹49,999
+              </span>
+
+              <button
+                class="electronics-button"
+                onclick="addToCart({
+                  id: 10,
+                  name: 'Modern Laptop Setup',
+                  price: 49999,
+                  image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=900&q=85'
+                })"
+              >
+                Add to cart
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 5 -->
+
+        <article class="electronics-card">
+
+          <div class="electronics-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=900&q=85"
+              alt="Portable speaker"
+            >
+
+          </div>
+
+          <div class="electronics-info">
+
+            <h3>
+              Portable Speaker
+            </h3>
+
+            <p>
+              Compact speaker with a clean design
+              for music anywhere.
+            </p>
+
+            <div class="electronics-bottom">
+
+              <span class="electronics-price">
+                ₹1,299
+              </span>
+
+              <button
+                class="electronics-button"
+                onclick="addToCart({
+                  id: 11,
+                  name: 'Portable Speaker',
+                  price: 1299,
+                  image: 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=900&q=85'
+                })"
+              >
+                Add to cart
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 6 -->
+
+        <article class="electronics-card">
+
+          <div class="electronics-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=900&q=85"
+              alt="Smartphone"
+            >
+
+          </div>
+
+          <div class="electronics-info">
+
+            <h3>
+              Everyday Smartphone
+            </h3>
+
+            <p>
+              Sleek everyday smartphone built for
+              communication and entertainment.
+            </p>
+
+            <div class="electronics-bottom">
+
+              <span class="electronics-price">
+                ₹18,999
+              </span>
+
+              <button
+                class="electronics-button"
+                onclick="addToCart({
+                  id: 12,
+                  name: 'Everyday Smartphone',
+                  price: 18999,
+                  image: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=900&q=85'
+                })"
+              >
+                Add to cart
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         BACK TO HOME
+    ========================= -->
+
+    <div class="electronics-back">
+
+      <a href="index.html">
+        ← Back to Zivora
+      </a>
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer class="footer">
+
+      <div>
+
+        <h3>
+          ZIVORA
+        </h3>
+
+        <p>
+          Curated for your everyday.
+        </p>
+
+      </div>
+
+      <p>
+        © 2026 Zivora. All rights reserved.
+      </p>
+
+    </footer>
+
+  </div>
+
+
+  <!-- CART SCRIPT -->
+
+  <script src="script.js"></script>
+
+</body>
+</html>

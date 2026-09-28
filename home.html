@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Home & Decor | Zivora</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f8f3ee;
+            color: #292329;
+        }
+
+        /* NAVBAR */
+        nav {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            background: #f8f3ee;
+            border-bottom: 1px solid #e8ddd5;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #48233f;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #292329;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #8b4f78;
+        }
+
+        .cart-btn {
+            text-decoration: none;
+            background: #48233f;
+            color: white;
+            padding: 11px 18px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .cart-count {
+            margin-left: 5px;
+        }
+
+        /* HERO */
+        .hero {
+            padding: 75px 7% 55px;
+            text-align: center;
+        }
+
+        .hero span {
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: #9b6b8e;
+            font-weight: 700;
+        }
+
+        .hero h1 {
+            margin-top: 15px;
+            font-size: 52px;
+            line-height: 1.05;
+            color: #48233f;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: 18px auto 0;
+            font-size: 16px;
+            color: #756d72;
+            line-height: 1.7;
+        }
+
+        /* PRODUCTS */
+        .products-section {
+            padding: 20px 7% 80px;
+        }
+
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .section-title h2 {
+            font-size: 28px;
+            color: #48233f;
+        }
+
+        .section-title p {
+            font-size: 13px;
+            color: #81777d;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid #eadfd8;
+            transition: 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(72, 35, 63, 0.10);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 330px;
+            overflow: hidden;
+            background: #eee;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: 0.4s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.04);
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info span {
+            font-size: 11px;
+            color: #9b6b8e;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .product-info h3 {
+            margin-top: 8px;
+            font-size: 19px;
+            color: #332b31;
+        }
+
+        .product-info p {
+            margin-top: 8px;
+            color: #7d747a;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .product-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .price {
+            font-size: 18px;
+            font-weight: 700;
+            color: #48233f;
+        }
+
+        .add-btn {
+            border: none;
+            background: #48233f;
+            color: white;
+            padding: 11px 16px;
+            border-radius: 22px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: 0.3s ease;
+        }
+
+        .add-btn:hover {
+            background: #713c64;
+            transform: translateY(-2px);
+        }
+
+        /* FOOTER */
+        footer {
+            background: #48233f;
+            color: white;
+            padding: 35px 7%;
+            text-align: center;
+        }
+
+        footer h3 {
+            font-size: 22px;
+            letter-spacing: 2px;
+        }
+
+        footer p {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #ddd0da;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                padding: 0 5%;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 55px 5% 40px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .products-section {
+                padding: 20px 5% 60px;
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .product-image {
+                height: 360px;
+            }
+
+            .section-title {
+                display: block;
+            }
+
+            .section-title p {
+                margin-top: 6px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+
+        <div class="logo">
+            ZIVORA.
+        </div>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="fashion.html">Fashion</a>
+            <a href="beauty.html">Beauty</a>
+            <a href="bags.html">Bags</a>
+            <a href="books.html">Books</a>
+            <a href="electronics.html">Electronics</a>
+        </div>
+
+        <a href="cart.html" class="cart-btn">
+            Cart <span class="cart-count">0</span>
+        </a>
+
+    </nav>
+
+
+    <!-- HERO -->
+    <section class="hero">
+
+        <span>HOME & DECOR</span>
+
+        <h1>
+            Make Your Space<br>
+            Feel Like You.
+        </h1>
+
+        <p>
+            Thoughtfully selected pieces for a calm,
+            beautiful and comfortable everyday home.
+        </p>
+
+    </section>
+
+
+    <!-- PRODUCTS -->
+    <section class="products-section">
+
+        <div class="section-title">
+            <h2>Home Essentials</h2>
+            <p>Simple pieces. Beautiful spaces.</p>
+        </div>
+
+
+        <div class="products">
+
+
+            <!-- PRODUCT 1 -->
+            <div class="product-card">
+
+                <div class="product-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=85"
+                        alt="Minimal Table Lamp"
+                    >
+                </div>
+
+                <div class="product-info">
+
+                    <span>Lighting</span>
+
+                    <h3>Minimal Table Lamp</h3>
+
+                    <p>
+                        A warm and elegant lamp for your
+                        bedside table or workspace.
+                    </p>
+
+                    <div class="product-bottom">
+
+                        <div class="price">
+                            ₹1,299
+                        </div>
+
+                        <button
+                            class="add-btn"
+                            onclick="addToCart({
+                                id: 19,
+                                name: 'Minimal Table Lamp',
+                                price: 1299,
+                                image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=85'
+                            })"
+                        >
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 2 -->
+            <div class="product-card">
+
+                <div class="product-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=900&q=85"
+                        alt="Modern Cushion Set"
+                    >
+                </div>
+
+                <div class="product-info">
+
+                    <span>Soft Furnishings</span>
+
+                    <h3>Modern Cushion Set</h3>
+
+                    <p>
+                        Soft neutral cushions designed
+                        for a cozy and modern space.
+                    </p>
+
+                    <div class="product-bottom">
+
+                        <div class="price">
+                            ₹899
+                        </div>
+
+                        <button
+                            class="add-btn"
+                            onclick="addToCart({
+                                id: 20,
+                                name: 'Modern Cushion Set',
+                                price: 899,
+                                image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=900&q=85'
+                            })"
+                        >
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 3 -->
+            <div class="product-card">
+
+                <div class="product-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=900&q=85"
+                        alt="Soft Ceramic Vase"
+                    >
+                </div>
+
+                <div class="product-info">
+
+                    <span>Decor</span>
+
+                    <h3>Soft Ceramic Vase</h3>
+
+                    <p>
+                        A minimal ceramic vase that adds
+                        a soft decorative touch.
+                    </p>
+
+                    <div class="product-bottom">
+
+                        <div class="price">
+                            ₹699
+                        </div>
+
+                        <button
+                            class="add-btn"
+                            onclick="addToCart({
+                                id: 21,
+                                name: 'Soft Ceramic Vase',
+                                price: 699,
+                                image: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=900&q=85'
+                            })"
+                        >
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 4 -->
+            <div class="product-card">
+
+                <div class="product-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=900&q=85"
+                        alt="Compact Wooden Side Table"
+                    >
+                </div>
+
+                <div class="product-info">
+
+                    <span>Furniture</span>
+
+                    <h3>Compact Wooden Side Table</h3>
+
+                    <p>
+                        A clean wooden side table for
+                        bedrooms, living rooms or corners.
+                    </p>
+
+                    <div class="product-bottom">
+
+                        <div class="price">
+                            ₹2,499
+                        </div>
+
+                        <button
+                            class="add-btn"
+                            onclick="addToCart({
+                                id: 22,
+                                name: 'Compact Wooden Side Table',
+                                price: 2499,
+                                image: 'https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=900&q=85'
+                            })"
+                        >
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 5 -->
+            <div class="product-card">
+
+                <div class="product-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=900&q=85"
+                        alt="Minimal Wall Art"
+                    >
+                </div>
+
+                <div class="product-info">
+
+                    <span>Wall Decor</span>
+
+                    <h3>Minimal Wall Art</h3>
+
+                    <p>
+                        Simple artwork to bring personality
+                        and calmness to your walls.
+                    </p>
+
+                    <div class="product-bottom">
+
+                        <div class="price">
+                            ₹799
+                        </div>
+
+                        <button
+                            class="add-btn"
+                            onclick="addToCart({
+                                id: 23,
+                                name: 'Minimal Wall Art',
+                                price: 799,
+                                image: 'https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=900&q=85'
+                            })"
+                        >
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 6 -->
+            <div class="product-card">
+
+                <div class="product-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1600494603989-9650cf6ddd3d?auto=format&fit=crop&w=900&q=85"
+                        alt="Cozy Bedroom Edit"
+                    >
+                </div>
+
+                <div class="product-info">
+
+                    <span>Bedroom</span>
+
+                    <h3>Cozy Bedroom Edit</h3>
+
+                    <p>
+                        A curated collection for a warm,
+                        peaceful and comfortable bedroom.
+                    </p>
+
+                    <div class="product-bottom">
+
+                        <div class="price">
+                            ₹1,499
+                        </div>
+
+                        <button
+                            class="add-btn"
+                            onclick="addToCart({
+                                id: 24,
+                                name: 'Cozy Bedroom Edit',
+                                price: 1499,
+                                image: 'https://images.unsplash.com/photo-1600494603989-9650cf6ddd3d?auto=format&fit=crop&w=900&q=85'
+                            })"
+                        >
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <h3>ZIVORA.</h3>
+
+        <p>
+            Everyday things, thoughtfully curated.
+        </p>
+
+    </footer>
+
+
+    <!-- CART SCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+</html>
